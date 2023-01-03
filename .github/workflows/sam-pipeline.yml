@@ -15,6 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       # sam build 
+      - run: $(dirname $(readlink $(which sam)))/pip install --force-reinstall "cryptography==38.0.4"
       - run: sam build --use-container -t ./github-actions-with-aws-sam/template.yaml
 
 # Run Unit tests- Specify unit tests here 
